@@ -3,8 +3,6 @@ from CreLanguageTranslate import TranslateBase
 import deep_translator
 from deep_translator import GoogleTranslator
 
-
-
 ##        translatorList.append(GoogleTranslator(source=language, target=newLanguage))
 ##        translatorList.append(MyMemoryTranslator(source=language, target=newLanguage)) 
 ##         if((not language in ['ar','he','no','se','ud','ur']) and (not newLanguage in ['ar','he','no','se','ud','ur'])):

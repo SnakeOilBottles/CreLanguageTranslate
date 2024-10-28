@@ -1,3 +1,5 @@
+#pip3 install CreLanguageTranslate
+
 from CreLanguageTranslate import LanguageTranslate 
 
 lt = LanguageTranslate()

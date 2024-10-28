@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "CreLanguageTranslate"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Michael Kahle", email="michael.kahle@yahoo.de" },
 ]
