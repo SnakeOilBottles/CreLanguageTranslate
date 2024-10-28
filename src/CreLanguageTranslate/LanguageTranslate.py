@@ -1,4 +1,4 @@
-from libraries.LanguageTranslate.translateInstance import translateInstance
+from CreLanguageTranslate import translateInstance
 
 class LanguageTranslate():
 

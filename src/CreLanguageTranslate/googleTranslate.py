@@ -1,4 +1,4 @@
-from libraries.LanguageTranslate.TranslateBase import TranslateBase
+from CreLanguageTranslate import TranslateBase
 
 import deep_translator
 from deep_translator import GoogleTranslator

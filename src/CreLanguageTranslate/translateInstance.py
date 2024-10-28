@@ -1,4 +1,4 @@
-from libraries.LanguageTranslate.googleTranslate import googleTranslate
+from CreLanguageTranslate import googleTranslate
 import random
 
 class translateInstance():
