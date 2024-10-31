@@ -104,6 +104,8 @@ jobs:
         inputs: >-
           ./dist/*.tar.gz
           ./dist/*.whl
+    - name pwd
+      run: (pwd)
     - name: Retrieve version
       run:  echo ::set-env name=PKG_VERSION::$(grep -m 1 version ../pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)
     - name: Create GitHub Release
