@@ -1,6 +1,8 @@
 #pip3 install CreLanguageTranslate
 
-from CreLanguageTranslate import LanguageTranslate 
+from CreLanguageTranslate.LanguageTranslate import LanguageTranslate 
+
+from CreLanguageTranslate.translateInstance import translateInstance
 
 lt = LanguageTranslate()
 li = lt.getTranslatorByLanguage('en','de')

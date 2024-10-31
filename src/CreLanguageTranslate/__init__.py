@@ -1,2 +1,1 @@
-#
-#from CreLanguageTranslate.LanguageTranslate import LanguageTranslate
+from CreLanguageTranslate.LanguageTranslate import LanguageTranslate

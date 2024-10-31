@@ -2,6 +2,7 @@ from CreLanguageTranslate.TranslateBase import TranslateBase
 
 import deep_translator
 from deep_translator import GoogleTranslator
+import random
 
 ##        translatorList.append(GoogleTranslator(source=language, target=newLanguage))
 ##        translatorList.append(MyMemoryTranslator(source=language, target=newLanguage)) 
@@ -34,15 +35,18 @@ class googleTranslate(TranslateBase):
         allLanguages = GoogleTranslator().get_supported_languages(as_dict=True)
         for langLong in allLanguages:
             langShort = allLanguages[langLong] 
-            langIso = langShort[0:2]                              #better split on "-"
+            langIso = langShort.split('-')[0]
             print(['long',langLong,'short',langShort,'iso',langIso])
             ## ['long', 'chinese (simplified)', 'short', 'zh-CN']
             ## ['long', 'chinese (traditional)', 'short', 'zh-TW']
-            googleTranslate.isoDictionary[langIso] = langShort    #overwrites! better collect, then select random
+            if(not langIso in googleTranslate.isoDictionary):
+              googleTranslate.isoDictionary[langIso] = []
+            googleTranslate.isoDictionary[langIso].append(langShort)    #overwrites! better collect, then select random
             if(not langShort in googleTranslate.sourceLanguages):
               googleTranslate.sourceLanguages.append(langIso)
             if(not langShort in googleTranslate.targetLanguages):
               googleTranslate.targetLanguages.append(langIso)
+        print(googleTranslate.isoDictionary)
 
     def getServiceName(self):
         return 'google'
@@ -50,7 +54,9 @@ class googleTranslate(TranslateBase):
     def translate(self, sourceText, sourceLanguage, targetLanguage):
         googleTranslate.callCounter += 1
         googleTranslate.totalTextLength += len(sourceText)
-        gt = GoogleTranslator(source=googleTranslate.isoDictionary[sourceLanguage], target=googleTranslate.isoDictionary[targetLanguage]) 
+        anySource = random.choice(googleTranslate.isoDictionary[sourceLanguage])
+        anyTarget = random.choice(googleTranslate.isoDictionary[targetLanguage])  
+        gt = GoogleTranslator(source=anySource, target=anyTarget) 
         targetText = gt.translate(sourceText)
         return targetText
 
