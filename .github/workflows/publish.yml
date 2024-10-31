@@ -11,7 +11,7 @@ jobs:
     name: Build distribution
     runs-on: ubuntu-latest
     outputs:
-      pkg_version: ${{ steps.color-selector.outputs.PKG_VERSION }}
+      pkg_version: ${{ steps.pkg-version.outputs.PKG_VERSION }}
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
