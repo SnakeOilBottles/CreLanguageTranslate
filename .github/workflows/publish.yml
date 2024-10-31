@@ -21,6 +21,22 @@ jobs:
       run: (pwd)
     - name: Retrieve version
       run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> $GITHUB_ENV
+    - name: env1
+      run: (env)
+    - name: Use the value 1
+      id: step_two1
+      run: |
+        printf '%s\n' "$PKG_VERSION" # This will output the version
+
+    - name: Set color
+      id: color-selector
+      run: echo "SELECTED_COLOR=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> "$GITHUB_OUTPUT"
+    - name: Get color 1
+      env:
+        SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+      run: echo "The selected color is $SELECTED_COLOR"
+
+
     - name: Run tests
       run: ./test.sh
     - name: Install pypa/build
@@ -108,6 +124,18 @@ jobs:
         inputs: >-
           ./dist/*.tar.gz
           ./dist/*.whl
+
+    - name: env2
+      run: (env)
+    - name: Use the value 2
+      id: step_two2
+      run: |
+        printf '%s\n' "$PKG_VERSION" # This will output the version
+    - name: Get color 2
+      env:
+        SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+      run: echo "The selected color is $SELECTED_COLOR"
+
     - name: Create GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
