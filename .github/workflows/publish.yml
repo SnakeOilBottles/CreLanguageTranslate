@@ -115,7 +115,7 @@ jobs:
         PKG_VERSION: ${{ needs.build.outputs.pkg_version }}
       run: >-
         gh release create
-        '${{ PKG_VERSION }}'
+        "$PKG_VERSION"
         --repo '${{ github.repository }}'
         --notes ""
     - name: Upload artifact signatures to GitHub Release
