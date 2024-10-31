@@ -20,7 +20,7 @@ jobs:
     - name: pwd
       run: (pwd)
     - name: Retrieve version
-      run:  echo ::set-env name=PKG_VERSION::$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)
+      run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> $GITHUB_ENV
     - name: Run tests
       run: ./test.sh
     - name: Install pypa/build
