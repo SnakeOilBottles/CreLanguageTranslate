@@ -21,8 +21,22 @@ jobs:
     - name: Set version
       id: pkg-version
       run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> "$GITHUB_OUTPUT"
+    - uses: ouzi-dev/commit-status-updater@v2
+      with:
+        status: "pending"
+        addHoldComment: "true"
+        pendingComment: "action pending! Tests failed!"
+        successComment: "action success! Tests failed!"
+        failComment: "action failed! Tests failed!"
     - name: Run tests
       run: ./test.sh
+    - uses: ouzi-dev/commit-status-updater@v2
+      with:
+        status: "pending"
+        addHoldComment: "true"
+        pendingComment: "action pending! Tests succeded!"
+        successComment: "action success! Tests succeded!"
+        failComment: "action failed! Tests succeded!"
     - name: Install pypa/build
       run: >-
         python3 -m
