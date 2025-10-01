@@ -1,0 +1,11 @@
+https://rapidapi.com/lvwzhen/api/openl-translate/pricing
+https://rapidapi.com/gatzuma/api/deep-translate1/pricing
+https://rapidapi.com/robust-api-robust-api-default/api/google-translate113/pricing
+
+
+
+
+
+--
+https://rapidapi.com/googlecloud/api/google-maps-geocoding
+https://www.geonames.org/login
