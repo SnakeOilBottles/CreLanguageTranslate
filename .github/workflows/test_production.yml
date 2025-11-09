@@ -1,12 +1,9 @@
 name: Publish CreLanguageTranslate to PyPI and TestPyPI
 on:
-  push:
-    branches:
-      - 'main'
   workflow_dispatch:
   schedule:
 #    daily,every 5 hours #m h d/m m d/w 
-    - cron:  '40 0 * * *'
+    - cron:  '35 1 * * *'
 
 jobs:
 
@@ -25,8 +22,8 @@ jobs:
       id: pkg-version
       run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> "$GITHUB_OUTPUT"
 
-    - name: Run tests
-      run: ./test.sh
+    - name: Run tests with official production version
+      run: ./test_production.sh
 
     - name: Install pypa/build
       run: >-
