@@ -1,4 +1,4 @@
-name: Test CreLanguageTranslate local
+name: '02 - Publish CreLanguageTranslate to PyPI and TestPyPI'
 on:
   workflow_dispatch:
 

@@ -1,4 +1,4 @@
-name: Publish CreLanguageTranslate to PyPI and TestPyPI
+name: '01 - Local test of CreLanguageTranslate'
 on:
   push:
     branches:
