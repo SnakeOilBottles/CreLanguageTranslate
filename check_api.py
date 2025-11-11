@@ -565,8 +565,8 @@ if(runInOrganization):
     ## TRANSLATE:
     results.append("# TRANSLATE")
     results.append("\n---\n") 
-    inqRapidDeepTranslate1(results)
-    results.append("\n---\n") 
+    #inqRapidDeepTranslate1(results)  # Defect?
+    #results.append("\n---\n")        # 
     inqRapidMicroTranslate3(results)
     results.append("\n---\n") 
     inqRapidTextTranslator2(results)

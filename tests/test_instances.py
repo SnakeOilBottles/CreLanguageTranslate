@@ -8,6 +8,7 @@ class TestTranslate(TestCase):
     def test_each_language(self):
       allInstances = [googleTranslate(), rAPItranslator2() ]
       for inst in allInstances:
+        print(['service name: ',inst.getServiceName()])
         self.assertTrue('de' in inst.sourceLanguages)
         self.assertTrue('en' in inst.sourceLanguages) 
         self.assertTrue('de' in inst.targetLanguages)
@@ -16,6 +17,7 @@ class TestTranslate(TestCase):
     def test_each_translate(self):
       allInstances = [googleTranslate(), rAPItranslator2() ]
       for inst in allInstances:
+        print(['service name: ',inst.getServiceName()])
         tarTree = inst.translate('tree', 'en','de')
         self.assertEqual('Baum', tarTree)
         tarHouse = inst.translate('Haus','de','en')
