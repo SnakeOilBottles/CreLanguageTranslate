@@ -28,51 +28,6 @@ def addSubscribeMessageToResults(results=[], name='', url='', full=False):
         results.append("   * Value: **Your key here** ") 
     return True
 
-## NOT WORKING ANY MORE -> TIMEOUT, 0% Service Level!!
-def inqRapidFreeNews(results=[]):
-    gitOrg = os.getenv('GITHUB_OWNER')
-    apiKey = os.getenv('RAPIDAPI_KEY')
-    results.append("### RapidAPI: Free-News")
-    url = "https://free-news.p.rapidapi.com/v1/search"
-    querystring = {"q":"Klimawandel","lang":"de","page":1,"page_size":"20"}
-    headers = {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': "free-news.p.rapidapi.com"
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    response.encoding = response.apparent_encoding
-    # print(response.text)
-    print(response.status_code)     #200
-    #504 : The request to the API has timed out
-    if((response.text) and (not response.status_code in [204, 500, 504])):
-        results.append(":white_check_mark: Free-News respone fine")
-        text = response.text
-        if(not isinstance(text,str)):
-            text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to Free-News")
-            addSubscribeMessageToResults(results, "Free-News", "https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news")
-            return False
-        if (('status' in jsonData) and ('ok'==jsonData['status'])):
-          results.append(":white_check_mark: Free-News status fine")
-          if (jsonData['total_hits']>0):
-            results.append(":white_check_mark: Free-News results found")
-            return True
-          else: 
-            results.append(":no_entry: Free-News results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry:  Free-News status **failed**:")
-          addSubscribeMessageToResults(results, "Free-News", "https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news")
-          return False
-    else:
-      results.append(":no_entry: Free-News respone **failed**") 
-      results.append("Maybe retry later...?") #?
-      return False
-    return False
 
 def inqRapidDeeplTranslator4(results=[]):
     gitOrg = os.getenv('GITHUB_OWNER')
@@ -322,7 +277,7 @@ def inqRapidDeepTranslate1(results=[]):
     gitOrg = os.getenv('GITHUB_OWNER')
     apiKey = os.getenv('RAPIDAPI_KEY')
     results.append("### RapidAPI: Deep-Translate-1")
-    url = "https://free-news.p.rapidapi.com/language/translate/v2"
+    url = "https://rapidapi.com/gatzuma/api/deep-translate1"
     payload = {"q":"Klimawandel","source":"de","target":"en"}
     headers = {
         'x-rapidapi-key': apiKey,
@@ -364,189 +319,6 @@ def inqRapidDeepTranslate1(results=[]):
       results.append("Maybe retry later...?") #?
       return False
     return False
-
-
-def inqRapidNewsApi14(results=[]):
-    gitOrg = os.getenv('GITHUB_OWNER')
-    apiKey = os.getenv('RAPIDAPI_KEY')
-    results.append("### RapidAPI: News-API-14")
-    url = "https://free-news.p.rapidapi.com/v2/search/articles"
-    querystring = {"query":"Klimawandel","language":"de","limit":"20"}
-    headers = {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': "news-api14.p.rapidapi.com"
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    response.encoding = response.apparent_encoding
-    # print(response.text)
-    print(response.status_code)     #200
-    #504 : The request to the API has timed out
-    if((response.text) and (not response.status_code in [204, 500, 504])):
-        results.append(":white_check_mark: News-API-14 respone fine")
-        text = response.text
-        if(not isinstance(text,str)):
-            text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to News-API-14")
-            addSubscribeMessageToResults(results, "News-API-14", "https://rapidapi.com/bonaipowered/api/news-api14")
-            return False
-        if (('success' in jsonData) and jsonData['success']):
-          results.append(":white_check_mark: News-API-14 status fine")
-          if (jsonData['totalHits']>0):
-            results.append(":white_check_mark: News-API-14 results found")
-            return True
-          else: 
-            results.append(":no_entry: News-API-14 results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry: News-API-14 status **failed**:")
-          addSubscribeMessageToResults(results, "News-API-14", "https://rapidapi.com/bonaipowered/api/news-api14")
-          return False
-    else:
-      results.append(":no_entry: News-API-14 respone **failed**") 
-      results.append("Maybe retry later...?") #?
-      return False
-    return False
-
-def inqRapidGoogleNews22(results=[]):
-    gitOrg = os.getenv('GITHUB_OWNER')
-    apiKey = os.getenv('RAPIDAPI_KEY')
-    results.append("### RapidAPI: Google-News-22")
-    url = "https://free-news.p.rapidapi.com/v1/search"
-    querystring = {"q":"Klimawandel","language":"de","country":"de"}
-    headers = {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': "google-news22.p.rapidapi.com"
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    response.encoding = response.apparent_encoding
-    # print(response.text)
-    print(response.status_code)     #400
-    #504 : The request to the API has timed out
-    if((response.text) and (not response.status_code in [204, 500, 504])):
-        results.append(":white_check_mark: Google-News-22 respone fine")
-        text = response.text
-        if(not isinstance(text,str)):
-            text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to Google-News-22")
-            addSubscribeMessageToResults(results, "Google-News-22", "https://rapidapi.com/bonaipowered/api/google-news22", True)
-            return False
-        if (('success' in jsonData) and jsonData['success']):
-          results.append(":white_check_mark: Google-News-22 status fine")
-          if (('total' in jsonData) and (jsonData['total']>0)):
-            results.append(":white_check_mark: Google-News-22 results found")
-            return True
-          else: 
-            results.append(":no_entry: Google-News-22 results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry:  Google-News-22 status **failed**:")
-          addSubscribeMessageToResults(results, "Google-News-22", "https://rapidapi.com/bonaipowered/api/google-news22", True)
-          return False
-    else:
-      results.append(":no_entry: Google-News-22 respone **failed**") 
-      addSubscribeMessageToResults(results, "Google-News-22", "https://rapidapi.com/bonaipowered/api/google-news22", True)
-      return False
-    return False
-
-def inqRapidGoogleNews25(results=[]):
-    gitOrg = os.getenv('GITHUB_OWNER')
-    apiKey = os.getenv('RAPIDAPI_KEY')
-    results.append("### RapidAPI: Google-News-25")
-    url = "https://google-news25.p.rapidapi.com/search"
-    querystring = {"keyword":"Klimawandel","language":"de-DE"}
-    headers = {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': "google-news25.p.rapidapi.com"
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    response.encoding = response.apparent_encoding
-    # print(response.text)
-    print(response.status_code)     #200
-    #504 : The request to the API has timed out
-    if((response.text) and (not response.status_code in [204, 500, 504])):
-        results.append(":white_check_mark: Google-News-25 respone fine")
-        text = response.text
-        if(not isinstance(text,str)):
-            text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to Google-News-25")
-            addSubscribeMessageToResults(results, "Google-News-25", "https://rapidapi.com/things4u-api4upro/api/google-news25")
-            return False
-        if (('status' in jsonData) and jsonData['status']):
-          results.append(":white_check_mark: Google-News-25 status fine")
-          if (len(jsonData['data'])>0):
-            results.append(":white_check_mark: Google-News-25 results found")
-            return True
-          else: 
-            results.append(":no_entry: Google-News-25 results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry: Google-News-25 status **failed**:")
-          addSubscribeMessageToResults(results, "Google-News-25", "https://rapidapi.com/things4u-api4upro/api/google-news25")
-          return False
-    else:
-      results.append(":no_entry: Google-News-25 respone **failed**") 
-      results.append("Maybe retry later...?") #?
-      return False
-    return False
-
-def inqRapidRealTimeNews(results=[]):
-    gitOrg = os.getenv('GITHUB_OWNER')
-    apiKey = os.getenv('RAPIDAPI_KEY')
-    results.append("### RapidAPI: Real-Time-News-Data")
-    url = "https://real-time-news-data.p.rapidapi.com/search"
-    querystring = {"query":"Klimawandel","lang":"de","country":"DE","limit":10}
-    headers = {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': "real-time-news-data.p.rapidapi.com"
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    response.encoding = response.apparent_encoding
-    # print(response.text)
-    print(response.status_code)     #200
-    #504 : The request to the API has timed out
-    if((response.text) and (not response.status_code in [204, 500, 504])):
-        results.append(":white_check_mark: Real-Time-News-Data respone fine")
-        text = response.text
-        if(not isinstance(text,str)):
-            text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to Real-Time-News-Data")
-            addSubscribeMessageToResults(results, "Real-Time-News-Data", "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-news-data")
-            return False
-        if (('status' in jsonData) and ('OK'==jsonData['status'])):
-          results.append(":white_check_mark: Real-Time-News-Data status fine")
-          if (len(jsonData['data'])>0):
-            results.append(":white_check_mark: Real-Time-News-Data results found")
-            return True
-          else: 
-            results.append(":no_entry: Real-Time-News-Data results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry: Real-Time-News-Data status **failed**:")
-          addSubscribeMessageToResults(results, "Real-Time-News-Data", "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-news-data")
-          return False
-    else:
-      results.append(":no_entry: Real-Time-News-Data respone **failed**") 
-      results.append("Maybe retry later...?") #?
-      return False
-    return False
-
-
 
 def checkRapidAPI(results=[]):
     gitOrg = os.getenv('GITHUB_OWNER')
@@ -790,18 +562,7 @@ if(runInOrganization):
   rapidAPIExists = checkRapidAPI(results)
   results.append("\n---\n")
   if(rapidAPIExists):
-    ## NEWS:
-    results.append("# NEWS")
-    results.append("\n---\n") 
-    inqRapidGoogleNews22(results)
-    results.append("\n---\n")
-    #inqRapidFreeNews(results)
-    inqRapidNewsApi14(results)
-    results.append("\n---\n")
-    inqRapidGoogleNews25(results)
-    results.append("\n---\n")
-    inqRapidRealTimeNews(results)
-    results.append("\n---\n")
+    ## TRANSLATE:
     results.append("# TRANSLATE")
     results.append("\n---\n") 
     inqRapidDeepTranslate1(results)
