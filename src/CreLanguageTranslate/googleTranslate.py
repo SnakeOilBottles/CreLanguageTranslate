@@ -28,6 +28,7 @@ class googleTranslate(TranslateBase):
     callCounter = 0
     totalTextLength = 0 
     isoDictionary = {}
+    nameDictionary = {}
 
     maxTextLength = 5000
 
@@ -41,7 +42,12 @@ class googleTranslate(TranslateBase):
             ## ['long', 'chinese (traditional)', 'short', 'zh-TW']
             if(not langIso in googleTranslate.isoDictionary):
               googleTranslate.isoDictionary[langIso] = []
-            googleTranslate.isoDictionary[langIso].append(langShort)    #overwrites! better collect, then select random
+            if(not langShort in googleTranslate.isoDictionary[langIso]):
+              googleTranslate.isoDictionary[langIso].append(langShort)  
+            if(not langIso in googleTranslate.nameDictionary):
+              googleTranslate.nameDictionary[langIso] = []
+            if(not langLong in googleTranslate.nameDictionary[langIso]):
+              googleTranslate.nameDictionary[langIso].append(langLong)   
             if(not langShort in googleTranslate.sourceLanguages):
               googleTranslate.sourceLanguages.append(langIso)
             if(not langShort in googleTranslate.targetLanguages):
@@ -49,7 +55,7 @@ class googleTranslate(TranslateBase):
         print(googleTranslate.isoDictionary)
 
     def getServiceName(self):
-        return 'google'
+        return 'deepTranslator.google'
 
     def translate(self, sourceText, sourceLanguage, targetLanguage):
         googleTranslate.callCounter += 1

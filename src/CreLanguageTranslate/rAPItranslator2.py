@@ -28,6 +28,7 @@ class rAPItranslator2(TranslateBase):
     callCounter = 0
     totalTextLength = 0 
     isoDictionary = {}
+    nameDictionary = {}
 
     maxTextLength = 5000
     service = 'text-translator2'
@@ -39,7 +40,12 @@ class rAPItranslator2(TranslateBase):
             langName = language['name']
             if(not langIso in rAPItranslator2.isoDictionary):
               rAPItranslator2.isoDictionary[langIso] = []
-            rAPItranslator2.isoDictionary[langIso].append(langName)    
+            if(not langIso in rAPItranslator2.isoDictionary[langIso]):
+              rAPItranslator2.isoDictionary[langIso].append(langIso)    
+            if(not langIso in rAPItranslator2.nameDictionary):
+              rAPItranslator2.nameDictionary[langIso] = []
+            if(not langName in rAPItranslator2.nameDictionary[langIso]):
+              rAPItranslator2.nameDictionary[langIso].append(langName) 
             if(not langIso in rAPItranslator2.sourceLanguages):
               rAPItranslator2.sourceLanguages.append(langIso)
             if(not langIso in rAPItranslator2.targetLanguages):
