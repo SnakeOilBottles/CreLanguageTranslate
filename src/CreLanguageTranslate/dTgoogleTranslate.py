@@ -18,7 +18,7 @@ import random
 ##        ['long', 'hawaiian', 'short', 'haw', 'iso', 'ha']
 ##        ['long', 'hmong', 'short', 'hmn', 'iso', 'hm']
 
-class googleTranslate(TranslateBase):
+class dTgoogleTranslate(TranslateBase):
 
     ## https://stackoverflow.com/questions/9056957/correct-way-to-define-class-variables-in-python
     ## class variable vs instance variable
@@ -40,28 +40,28 @@ class googleTranslate(TranslateBase):
             print(['long',langLong,'short',langShort,'iso',langIso])
             ## ['long', 'chinese (simplified)', 'short', 'zh-CN']
             ## ['long', 'chinese (traditional)', 'short', 'zh-TW']
-            if(not langIso in googleTranslate.isoDictionary):
-              googleTranslate.isoDictionary[langIso] = []
-            if(not langShort in googleTranslate.isoDictionary[langIso]):
-              googleTranslate.isoDictionary[langIso].append(langShort)  
-            if(not langIso in googleTranslate.nameDictionary):
-              googleTranslate.nameDictionary[langIso] = []
-            if(not langLong in googleTranslate.nameDictionary[langIso]):
-              googleTranslate.nameDictionary[langIso].append(langLong)   
-            if(not langShort in googleTranslate.sourceLanguages):
-              googleTranslate.sourceLanguages.append(langIso)
-            if(not langShort in googleTranslate.targetLanguages):
-              googleTranslate.targetLanguages.append(langIso)
-        print(googleTranslate.isoDictionary)
+            if(not langIso in dTgoogleTranslate.isoDictionary):
+              dTgoogleTranslate.isoDictionary[langIso] = []
+            if(not langShort in dTgoogleTranslate.isoDictionary[langIso]):
+              dTgoogleTranslate.isoDictionary[langIso].append(langShort)  
+            if(not langIso in dTgoogleTranslate.nameDictionary):
+              dTgoogleTranslate.nameDictionary[langIso] = []
+            if(not langLong in dTgoogleTranslate.nameDictionary[langIso]):
+              dTgoogleTranslate.nameDictionary[langIso].append(langLong)   
+            if(not langShort in dTgoogleTranslate.sourceLanguages):
+              dTgoogleTranslate.sourceLanguages.append(langIso)
+            if(not langShort in dTgoogleTranslate.targetLanguages):
+              dTgoogleTranslate.targetLanguages.append(langIso)
+        print(dTgoogleTranslate.isoDictionary)
 
     def getServiceName(self):
         return 'deepTranslator.google'
 
     def translate(self, sourceText, sourceLanguage, targetLanguage):
-        googleTranslate.callCounter += 1
-        googleTranslate.totalTextLength += len(sourceText)
-        anySource = random.choice(googleTranslate.isoDictionary[sourceLanguage])
-        anyTarget = random.choice(googleTranslate.isoDictionary[targetLanguage])  
+        dTgoogleTranslate.callCounter += 1
+        dTgoogleTranslate.totalTextLength += len(sourceText)
+        anySource = random.choice(dTgoogleTranslate.isoDictionary[sourceLanguage])
+        anyTarget = random.choice(dTgoogleTranslate.isoDictionary[targetLanguage])  
         gt = GoogleTranslator(source=anySource, target=anyTarget) 
         targetText = gt.translate(sourceText)
         return targetText

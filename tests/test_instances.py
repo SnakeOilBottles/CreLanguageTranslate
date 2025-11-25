@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from CreLanguageTranslate.googleTranslate import googleTranslate
+from CreLanguageTranslate.dTgoogleTranslate import dTgoogleTranslate
 from CreLanguageTranslate.rAPItranslator2 import rAPItranslator2
 from CreLanguageTranslate.rAPImultiTraduction import rAPImultiTraduction
 
 class TestTranslate(TestCase):
 
     def test_each_language(self):
-      allInstances = [googleTranslate(), rAPItranslator2() ]
+      allInstances = [dTgoogleTranslate(), rAPItranslator2(), rAPImultiTraduction() ]
       for inst in allInstances:
         print(['service name: ',inst.getServiceName()])
         self.assertTrue('de' in inst.sourceLanguages)
@@ -16,7 +16,7 @@ class TestTranslate(TestCase):
         self.assertTrue('en' in inst.targetLanguages) 
 
     def test_each_translate(self):
-      allInstances = [googleTranslate(), rAPItranslator2(), rAPImultiTraduction() ]
+      allInstances = [dTgoogleTranslate(), rAPItranslator2(), rAPImultiTraduction() ]
       for inst in allInstances:
         print(['service name: ',inst.getServiceName()])
         tarTree = inst.translate('tree', 'en','de')

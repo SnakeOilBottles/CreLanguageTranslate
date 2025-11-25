@@ -1,4 +1,4 @@
-from CreLanguageTranslate.googleTranslate import googleTranslate
+from CreLanguageTranslate.dTgoogleTranslate import dTgoogleTranslate
 from CreLanguageTranslate.rAPItranslator2 import rAPItranslator2
 from CreLanguageTranslate.rAPImultiTraduction import rAPImultiTraduction
 import random
@@ -12,7 +12,7 @@ class translateInstance():
       self.targetLanguage = targetLanguage
       if(not translateInstance.translateClasses):
           print('Init all translators once')
-          translateInstance.translateClasses.append( googleTranslate() )
+          translateInstance.translateClasses.append( dTgoogleTranslate() )
           translateInstance.translateClasses.append( rAPItranslator2() )
           translateInstance.translateClasses.append( rAPImultiTraduction() )
           # add more
