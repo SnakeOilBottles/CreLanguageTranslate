@@ -1,5 +1,6 @@
 from CreLanguageTranslate.googleTranslate import googleTranslate
 from CreLanguageTranslate.rAPItranslator2 import rAPItranslator2
+from CreLanguageTranslate.rAPImultiTraduction import rAPImultiTraduction
 import random
 
 class translateInstance():
@@ -13,6 +14,7 @@ class translateInstance():
           print('Init all translators once')
           translateInstance.translateClasses.append( googleTranslate() )
           translateInstance.translateClasses.append( rAPItranslator2() )
+          translateInstance.translateClasses.append( rAPImultiTraduction() )
           # add more
 
       self.translateInstances = []
