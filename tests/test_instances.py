@@ -24,3 +24,8 @@ class TestTranslate(TestCase):
         tarHouse = inst.translate('Haus','de','en')
         self.assertEqual('house', tarHouse.lower())
 
+        tarHail = inst.translate('Thunderstorm: hail germany', 'en','de')
+        self.assertEqual('Gewitter: Hagel Deutschland', tarHail)
+        tarHail2 = inst.translate('hail germany', 'en','de')
+        self.assertEqual('Heil Deutschland', tarHail2)
+
