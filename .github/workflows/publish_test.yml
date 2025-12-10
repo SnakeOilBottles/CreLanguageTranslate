@@ -20,7 +20,7 @@ jobs:
       run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> "$GITHUB_OUTPUT"
 
     - name: Run tests
-      run: ./test.sh
+      run: ./test_local.sh
 
     - name: Install pypa/build
       run: >-

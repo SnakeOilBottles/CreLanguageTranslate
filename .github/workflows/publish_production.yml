@@ -19,8 +19,11 @@ jobs:
       id: pkg-version
       run: echo "PKG_VERSION=$(grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)" >> "$GITHUB_OUTPUT"
 
-    - name: Run tests
-      run: ./test.sh
+    - name: Run tests locally
+      run: ./test_local.sh
+
+    - name: Run tests on test instance
+      run: ./test_test.sh
 
     - name: Install pypa/build
       run: >-
