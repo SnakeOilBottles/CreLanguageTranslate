@@ -127,9 +127,10 @@ class rAPItranslator2(TranslateBase):
 
     def languages(self):
         jsonData = self.getRapid(endpoint='getLanguages')
-        if('data' in jsonData):
-           allLanguages = jsonData['data']
-           if('languages' in allLanguages):
+        if(jsonData):
+          if('data' in jsonData):
+            allLanguages = jsonData['data']
+            if('languages' in allLanguages):
               return allLanguages['languages']
         return [] 
         #return None
