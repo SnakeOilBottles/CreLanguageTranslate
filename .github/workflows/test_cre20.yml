@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   schedule:
 #    daily,on 5:20  #m h d/m m d/w 
-    - cron:  '20 5 * * *'
+    - cron:  '20 5 * * 0'
 
 # sudo docker container run  --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 /cre/python/CreLanguageTranslate/test_local.sh
 

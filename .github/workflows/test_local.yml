@@ -5,8 +5,8 @@ on:
       - 'main'
   workflow_dispatch:
   schedule:
-#    daily,every 5 hours #m h d/m m d/w 
-    - cron:  '05 2 * * *'
+#    Sunday 2:05 #m h d/m m d/w 
+    - cron:  '05 2 * * 0'
 
 jobs:
 
