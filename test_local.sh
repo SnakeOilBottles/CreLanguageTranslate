@@ -1,5 +1,5 @@
 #!/bin/sh
 pip3 install ../CreLanguageTranslate/
-python -m unittest
+python3 -m unittest
 pip3 uninstall -y CreLanguageTranslate
 pip3 install CreLanguageTranslate
