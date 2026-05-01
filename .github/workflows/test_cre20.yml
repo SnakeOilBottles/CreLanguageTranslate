@@ -5,6 +5,8 @@ on:
 #    daily,on 5:20  #m h d/m m d/w 
     - cron:  '20 5 * * *'
 
+# sudo docker container run  --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 /cre/python/CreLanguageTranslate/test_local.sh
+
 jobs:
   versions:
     runs-on: ubuntu-latest
