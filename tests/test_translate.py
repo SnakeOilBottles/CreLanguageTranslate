@@ -6,6 +6,14 @@ from importlib.metadata import version
 
 class TestTranslate(TestCase):
 
+    class TestResult(unittest.TestResult):
+        def addFailure(self, test, err):
+            print('This is my own Failure')
+            super(TestTranslate.TestResult, self).addFailure(test, err)
+        def addError(self, test, err):
+            print('This is my own Error')
+            super(TestTranslate.TestResult, self).addError(test, err)
+
     def test_version(self):
         print(['CreLanguageTranslate: ', version("CreLanguageTranslate")])
         self.assertEqual('Version', 'Version')
