@@ -6,19 +6,19 @@ if [ ! -f mysecrets.py ]; then
 fi
 
 #python3 -m unittest
-echo 'pre test'
-errorsFound=$(python3 -m unittest 2>&1 | grep 'ERROR\|FAIL')
-echo 'post test'
+resultsFound=$(python3 -m unittest 2>&1)
 pip3 uninstall -y CreLanguageTranslate
 pip3 install CreLanguageTranslate
 
-hasError=$(echo $errorsFound | grep -c 'ERROR\|FAIL')
+hasError=$(echo $resultsFound | grep -c 'ERROR\|FAIL')
 if [ $hasError -eq 0 ]; then
+    echo $resultsFound
     echo "[SUCCESS]: No errors in unittests!"
     exit 0
 else
+    echo $resultsFound
     echo "[FAIL]: Errors in unittests!"
-    echo $errorsFound
+    echo $hasError
     exit 1
 fi
 
