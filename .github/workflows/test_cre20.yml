@@ -16,9 +16,10 @@ jobs:
         GEONAMES_KEY: ${{ secrets.GEONAMES_KEY }}  
       volumes:
         - ${{ github.workspace }}:/cre/python/CreLanguageTranslate
-      workdir: /cre/python/CreLanguageTranslate/
 
     steps:
+      - name: cd
+        run: cd /cre/python/CreLanguageTranslate/ 
       - name: pwd
         run: pwd 
       - name: ls
