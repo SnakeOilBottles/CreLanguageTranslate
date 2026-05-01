@@ -29,6 +29,7 @@ class dTgoogleTranslate(TranslateBase):
     totalTextLength = 0 
     isoDictionary = {}
     nameDictionary = {}
+    isWorking = True
 
     maxTextLength = 5000
 
@@ -64,6 +65,7 @@ class dTgoogleTranslate(TranslateBase):
         anyTarget = random.choice(dTgoogleTranslate.isoDictionary[targetLanguage])  
         gt = GoogleTranslator(source=anySource, target=anyTarget) 
         targetText = gt.translate(sourceText)
+        # dTgoogleTranslate.isWorking = False
         return targetText
 
 

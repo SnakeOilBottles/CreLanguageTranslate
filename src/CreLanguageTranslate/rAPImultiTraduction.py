@@ -77,6 +77,7 @@ class rAPImultiTraduction(TranslateBase):
     totalTextLength = 0 
     isoDictionary = {}
     nameDictionary = {}
+    isWorking = True
 
     maxTextLength = 5000
     service = 'rapid-translate-multi-traduction'
@@ -186,8 +187,13 @@ class rAPImultiTraduction(TranslateBase):
     def translation(self, sourceText, sourceLanguage, targetLanguage):
         payload = {"q":sourceText,"from":sourceLanguage,"to":targetLanguage}
         jsonData = self.postRapid(endpoint='t', payload=payload)
-        if (len(jsonData)>0):
+        ##print('*#-'*15)
+        ##print(jsonData) 
+        if hasattr(jsonData, "__len__"):
+          if (len(jsonData)>0):
             return jsonData[0]
+        else:
+            rAPImultiTraduction.isWorking = False
         return None  
 
     def translate(self, sourceText, sourceLanguage, targetLanguage):

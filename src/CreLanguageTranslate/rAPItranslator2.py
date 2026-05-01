@@ -29,6 +29,7 @@ class rAPItranslator2(TranslateBase):
     totalTextLength = 0 
     isoDictionary = {}
     nameDictionary = {}
+    isWorking = True
 
     maxTextLength = 5000
     service = 'text-translator2'
@@ -128,6 +129,11 @@ class rAPItranslator2(TranslateBase):
     def languages(self):
         jsonData = self.getRapid(endpoint='getLanguages')
         if(jsonData):
+          if('message' in jsonData):
+            #print(jsonData['message'])
+            if('Too many requests' == jsonData['message']):
+              rAPItranslator2.isWorking = False
+              print('FAIL: Too many requests @ rAPItranslator2')
           if('data' in jsonData):
             allLanguages = jsonData['data']
             if('languages' in allLanguages):

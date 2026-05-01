@@ -25,9 +25,9 @@ jobs:
       - name: pwd
         run: pwd 
       - name: ls
-        run:  ls -l 
+        run:  ls -l /cre/python/CreLanguageTranslate/
       - name: run docker in docker
-        run: ./test_local.sh 
+        run: /cre/python/CreLanguageTranslate/test_local.sh 
 
 
 
