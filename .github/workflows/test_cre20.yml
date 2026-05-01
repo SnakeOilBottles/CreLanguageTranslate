@@ -20,6 +20,8 @@ jobs:
         - ${{ github.workspace }}:/cre/python/CreLanguageTranslate
 
     steps:
+      - name: workspace
+        run: echo ${{ github.workspace }}
       - name: cd
         run: cd /cre/python/CreLanguageTranslate/ 
       - name: pwd
