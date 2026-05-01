@@ -13,12 +13,12 @@ pip3 install CreLanguageTranslate
 hasError=$(echo $resultsFound | grep -c 'ERROR\|FAIL')
 if [ $hasError -eq 0 ]; then
     echo $resultsFound
-    echo "[SUCCESS]: No errors in unittests!"
+    echo "[SUCCESS]: unittests succeeded!"
     exit 0
 else
     echo $resultsFound
     echo "[FAIL]: Errors in unittests!"
-    echo $resultsFound | grep 'ERROR\|FAIL'
+    #echo $resultsFound | grep 'ERROR\|FAIL'
     exit 1
 fi
 
