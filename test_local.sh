@@ -18,7 +18,7 @@ if [ $hasError -eq 0 ]; then
 else
     echo $resultsFound
     echo "[FAIL]: Errors in unittests!"
-    echo $hasError
+    echo $resultsFound | grep 'ERROR\|FAIL'
     exit 1
 fi
 

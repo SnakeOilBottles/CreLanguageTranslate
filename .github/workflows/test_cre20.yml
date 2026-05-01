@@ -11,7 +11,7 @@ jobs:
   versions:
     runs-on: ubuntu-latest
     container:
-      image: tamboraorg/crepython:2020.0
+      image: credocker/crepython:2020.0
       env:
         NEWSAPI_KEY:  ${{ secrets.NEWSAPI_KEY }}
         RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
