@@ -8,13 +8,23 @@ on:
 jobs:
   versions:
     runs-on: ubuntu-latest
+    container:
+      image: tamboraorg/crepython:2020.0
+      env:
+        NEWSAPI_KEY:  ${{ secrets.NEWSAPI_KEY }}
+        RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+        GEONAMES_KEY: ${{ secrets.GEONAMES_KEY }}  
+      volumes:
+        - ${{ github.workspace }}:/cre/python/CreLanguageTranslate
+      workdir: /cre/python/CreLanguageTranslate/
+
     steps:
       - name: pwd
-        run: (docker container run --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 pwd) 
+        run: pwd 
       - name: ls
-        run: (docker container run --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 ls -l) 
+        run:  ls -l 
       - name: run docker in docker
-        run: (docker container run --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 /cre/python/CreLanguageTranslate/test_local.sh) 
+        run: ./test_local.sh 
 
 
 
