@@ -5,6 +5,8 @@ from CreLanguageTranslate.LanguageTranslate import LanguageTranslate
 import CreLanguageTranslate 
 from importlib.metadata import version
 
+import mysecrets
+
 class TestTranslate(TestCase):
 
     class TestResult(unittest.TestResult):

@@ -4,6 +4,8 @@ from CreLanguageTranslate.dTgoogleTranslate import dTgoogleTranslate
 from CreLanguageTranslate.rAPItranslator2 import rAPItranslator2
 from CreLanguageTranslate.rAPImultiTraduction import rAPImultiTraduction
 
+import mysecrets
+
 class TestTranslate(TestCase):
 
     def test_each_language(self):
