@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# sudo docker container run  --rm --volume ./:/cre/python/CreLanguageTranslate  --workdir /cre/python/CreLanguageTranslate/ credocker/crepython:2020.0 /cre/python/CreLanguageTranslate/test_local.sh
+
 pip3 install ../CreLanguageTranslate/
 
 if [ ! -f mysecrets.py ]; then

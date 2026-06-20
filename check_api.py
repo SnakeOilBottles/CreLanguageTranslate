@@ -195,25 +195,33 @@ def inqRapidTextTranslator2(results=[]):
         text = response.text
         if(not isinstance(text,str)):
             text = text.decode("utf-8")
-        jsonData = json.loads(text)
-        if('message' in jsonData):
-          if('You are not subscribed to this API.'==jsonData['message']):
-            results.append(":no_entry: **Not** subscribed to Text-Translator-2")
+        try:
+          jsonData = json.loads(text)
+        except Exception as X:
+          results.append(":no_entry: Text-Translator-2 results **not** JSON")
+          results.append("Maybe retry later...?") #?
+          return False
+        else:
+          if('message' in jsonData):
+            if('You are not subscribed to this API.'==jsonData['message']):
+              results.append(":no_entry: **Not** subscribed to Text-Translator-2")
+              addSubscribeMessageToResults(results, "Text-Translator-2", "https://rapidapi.com/dickyagustin/api/text-translator2")
+              return False
+          if ('data' in jsonData):
+            results.append(":white_check_mark: Text-Translator-2 status fine")
+            if ('translatedText' in jsonData['data']):
+              results.append(":white_check_mark: Text-Translator-2 results found")
+              return True
+            else: 
+              results.append(":no_entry: Text-Translator-2 results **not** found")
+              results.append("Maybe retry later...?") #?
+              return False
+          else:
+            results.append(":no_entry: Text-Translator-2 status **failed**:")
             addSubscribeMessageToResults(results, "Text-Translator-2", "https://rapidapi.com/dickyagustin/api/text-translator2")
             return False
-        if ('data' in jsonData):
-          results.append(":white_check_mark: Text-Translator-2 status fine")
-          if ('translatedText' in jsonData['data']):
-            results.append(":white_check_mark: Text-Translator-2 results found")
-            return True
-          else: 
-            results.append(":no_entry: Text-Translator-2 results **not** found")
-            results.append("Maybe retry later...?") #?
-            return False
-        else:
-          results.append(":no_entry: Text-Translator-2 status **failed**:")
-          addSubscribeMessageToResults(results, "Text-Translator-2", "https://rapidapi.com/dickyagustin/api/text-translator2")
-          return False
+        finally:
+          time.sleep(1)
     else:
       results.append(":no_entry: Text-Translator-2 respone **failed**") 
       results.append("Maybe retry later...?") #?

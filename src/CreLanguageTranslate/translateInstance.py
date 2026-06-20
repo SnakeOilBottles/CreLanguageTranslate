@@ -12,9 +12,9 @@ class translateInstance():
       self.targetLanguage = targetLanguage
       if(not translateInstance.translateClasses):
           print('Init all translators once')
-          translateInstance.translateClasses.append( dTgoogleTranslate() )
-          translateInstance.translateClasses.append( rAPItranslator2() )
-          translateInstance.translateClasses.append( rAPImultiTraduction() )
+          translateInstance.translateClasses.append( dTgoogleTranslate() )   #works 2026-06-20
+          ##translateInstance.translateClasses.append( rAPItranslator2() )   #fails 2026-06-20 : REDIS
+          translateInstance.translateClasses.append( rAPImultiTraduction() ) #no HINDI
           # add more
 
       self.translateInstances = []
