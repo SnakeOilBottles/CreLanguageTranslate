@@ -14,7 +14,7 @@ class translateInstance():
           print('Init all translators once')
           translateInstance.translateClasses.append( dTgoogleTranslate() )   #works 2026-06-20
           ##translateInstance.translateClasses.append( rAPItranslator2() )   #fails 2026-06-20 : REDIS
-          translateInstance.translateClasses.append( rAPImultiTraduction() ) #no HINDI
+          #translateInstance.translateClasses.append( rAPImultiTraduction() ) #no HINDI ;to many requests
           # add more
 
       self.translateInstances = []
