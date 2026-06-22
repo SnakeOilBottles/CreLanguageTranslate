@@ -26,7 +26,8 @@ class translateInstance():
     def translate(self, sourceText):
         targetText = None
         if(self.translateInstances):
-          anyTranslator = random.choice(self.translateInstances)
+          # random.choices(mylist, weights = [10, 1, 1]) # https://www.w3schools.com/python/ref_random_choices.asp
+          anyTranslator = random.choice(self.translateInstances)   
           targetText = anyTranslator.translate(sourceText, self.sourceLanguage, self.targetLanguage)      
         return targetText
 

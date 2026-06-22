@@ -194,8 +194,8 @@ class rAPImultiTraduction(TranslateBase):
     def translation(self, sourceText, sourceLanguage, targetLanguage):
         payload = {"q":sourceText,"from":sourceLanguage,"to":targetLanguage}
         jsonData = self.postRapid(endpoint='t', payload=payload)
-        ##print('*#-'*15)
-        ##print(jsonData) 
+        print('*#-'*15)
+        print(jsonData) 
         if hasattr(jsonData, "__len__"):
           if (len(jsonData)>0):
             return jsonData[0]
