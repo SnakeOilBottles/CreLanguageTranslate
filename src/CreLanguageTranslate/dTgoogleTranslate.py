@@ -17,6 +17,7 @@ import random
 ## wrong: ['long', 'cebuano', 'short', 'ceb', 'iso', 'ce']
 ##        ['long', 'hawaiian', 'short', 'haw', 'iso', 'ha']
 ##        ['long', 'hmong', 'short', 'hmn', 'iso', 'hm']
+##        ['long', 'hebrew', 'short', 'iw', 'iso', 'iw']   -> (he!)
 
 class dTgoogleTranslate(TranslateBase):
 

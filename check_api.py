@@ -200,6 +200,7 @@ def inqRapidTextTranslator2(results=[]):
         except Exception as X:
           results.append(":no_entry: Text-Translator-2 results **not** JSON")
           results.append("Maybe retry later...?") #?
+          print(text)
           return False
         else:
           if('message' in jsonData):
