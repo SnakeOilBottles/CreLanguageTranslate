@@ -139,8 +139,13 @@ class rAPImultiTraduction(TranslateBase):
               if('You are not subscribed to this API.'==jsonData['message']):
                 #results.append(":no_entry: **Not** subscribed to "+rAPItranslator2.service)
                 #addSubscribeMessageToResults(results, service, "https://rapidapi.com/dickyagustin/api/text-translator2")
+                rAPImultiTraductionisWorking = False
                 return False
-              if('Invalid API key. Go to https://docs.rapidapi.com/docs/keys for more info.'==jsonData['message']):
+              if('Invalid API key' in jsonData['message']):
+                rAPImultiTraductionisWorking = False
+                return False
+              if('Too many requests'==jsonData['message']):
+                rAPImultiTraductionisWorking = False
                 return False
             return jsonData
         else:
