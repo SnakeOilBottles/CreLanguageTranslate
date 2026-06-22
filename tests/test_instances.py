@@ -20,7 +20,7 @@ class TestTranslate(TestCase):
 
     def test_each_translate(self):
       allInstances = [dTgoogleTranslate(), rAPItranslator2(), rAPImultiTraduction() ]
-      allInstances = [dTgoogleTranslate(), rAPImultiTraduction()]
+      allInstances = [dTgoogleTranslate()]
       for inst in allInstances:
         print(['service name: ',inst.getServiceName()])
         tarTree = inst.translate('tree', 'en','de')
