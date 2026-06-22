@@ -135,7 +135,8 @@ class rAPImultiTraduction(TranslateBase):
                 text = text.decode("utf-8")
             jsonData = json.loads(text)
             if('message' in jsonData):
-              #print(jsonData['message'])
+              print(jsonData['message'])
+              print(response.headers)
               if('You are not subscribed to this API.'==jsonData['message']):
                 #results.append(":no_entry: **Not** subscribed to "+rAPItranslator2.service)
                 #addSubscribeMessageToResults(results, service, "https://rapidapi.com/dickyagustin/api/text-translator2")
