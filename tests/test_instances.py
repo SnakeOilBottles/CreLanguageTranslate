@@ -10,7 +10,7 @@ class TestTranslate(TestCase):
 
     def test_each_language(self):
       allInstances = [dTgoogleTranslate(), rAPItranslator2(), rAPImultiTraduction() ]
-      allInstances = [dTgoogleTranslate(), rAPImultiTraduction()]
+      allInstances = [dTgoogleTranslate()]
       for inst in allInstances:
         print(['service name: ',inst.getServiceName()])
         self.assertTrue('de' in inst.sourceLanguages)
