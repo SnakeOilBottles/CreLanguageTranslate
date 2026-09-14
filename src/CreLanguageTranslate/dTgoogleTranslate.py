@@ -69,9 +69,9 @@ class dTgoogleTranslate(TranslateBase):
         anySource = random.choice(dTgoogleTranslate.isoDictionary[sourceLanguage])
         anyTarget = random.choice(dTgoogleTranslate.isoDictionary[targetLanguage])  
         gt = GoogleTranslator(source=anySource, target=anyTarget) 
-        time.sleep(0.3)
+        time.sleep(3)
         targetText = gt.translate(sourceText)
-        time.sleep(0.3)
+        time.sleep(3)
         # dTgoogleTranslate.isWorking = False
         return targetText
 
