@@ -1,5 +1,6 @@
 #!/bin/sh
 pip3 install CreLanguageTranslate
+pip3 install  --upgrade CreLanguageTranslate
 
 if [ ! -f mysecrets.py ]; then
   cp mysecrets.orig.py mysecrets.py

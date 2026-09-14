@@ -3,6 +3,7 @@ from CreLanguageTranslate.TranslateBase import TranslateBase
 import deep_translator
 from deep_translator import GoogleTranslator
 import random
+import time
 
 ##        translatorList.append(GoogleTranslator(source=language, target=newLanguage))
 ##        translatorList.append(MyMemoryTranslator(source=language, target=newLanguage)) 
@@ -31,6 +32,9 @@ class dTgoogleTranslate(TranslateBase):
     isoDictionary = {}
     nameDictionary = {}
     isWorking = True
+
+    # 5 per second
+    # 200000 per day
 
     maxTextLength = 5000
 
@@ -65,6 +69,7 @@ class dTgoogleTranslate(TranslateBase):
         anySource = random.choice(dTgoogleTranslate.isoDictionary[sourceLanguage])
         anyTarget = random.choice(dTgoogleTranslate.isoDictionary[targetLanguage])  
         gt = GoogleTranslator(source=anySource, target=anyTarget) 
+        time.sleep(0.3)
         targetText = gt.translate(sourceText)
         # dTgoogleTranslate.isWorking = False
         return targetText
